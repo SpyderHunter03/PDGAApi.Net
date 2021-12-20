@@ -19,6 +19,8 @@ jobs:
       run: dotnet restore
     - name: "Build"
       run: dotnet build --no-restore --configuration Release
+    - name: "Test"
+      run: dotnet test --no-restore --verbosity normal
     - name: "Pack"
       run: dotnet pack --configuration Release
     - name: "Publish On Version Change"
@@ -53,11 +55,11 @@ jobs:
         NUGET_SOURCE: https://api.nuget.org/v3/index.json
 
         # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-        # INCLUDE_SYMBOLS: false
-    #- name: Upload Artifacts
-    #  uses: actions/upload-artifact@v1.0.0
-    #  with:
-    #     name: nupkgs
-    #     path: ${{ github.workspace }}/artifacts/pkg/
+        INCLUDE_SYMBOLS: true
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+         name: nupkgs
+         path: ${{ github.workspace }}/artifacts/pkg/
     #- name: "Nuget Push"
     #  run: dotnet nuget push .\PDGAApi.Net\bin\Release\PDGAApi.Net.1.0.0.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
