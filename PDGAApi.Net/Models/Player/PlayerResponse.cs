@@ -1,7 +1,8 @@
-﻿namespace PDGAApi.Net.Models
+﻿namespace PDGAApi.Net.Models.Player
 {
-    public class Player
+    public class PlayerResponse
     {
+#pragma warning disable IDE1006 // Naming Styles
         public string first_name { get; set; }
         public string last_name { get; set; }
         public string pdga_number { get; set; }
@@ -19,5 +20,6 @@
         public string official_status { get; set; }
         public string official_expiration_date { get; set; }
         public string last_modified { get; set; }
+#pragma warning restore IDE1006 // Naming Styles
     }
 }
