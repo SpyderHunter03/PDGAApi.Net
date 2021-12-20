@@ -24,10 +24,10 @@ jobs:
       run: dotnet build --no-restore --configuration Release
       
     - name: "Set Username Secret"
-      run: dotnet user-secrets set "PDGA:UserName" "${{secrets.PDGAUserName}}" --project "${{ github.workspace }}PDGAApi.Net.Tests"
+      run: dotnet user-secrets set "PDGA:UserName" "${{secrets.PDGAUserName}}" --project "${{ github.workspace }}/PDGAApi.Net.Tests/PDGAApi.Net.Tests.csproj"
       
     - name: "Set Password Secret"
-      run: dotnet user-secrets set "PDGA:Password" "${{secrets.PDGAPassword}}" --project "${{ github.workspace }}PDGAApi.Net.Tests"
+      run: dotnet user-secrets set "PDGA:Password" "${{secrets.PDGAPassword}}" --project "${{ github.workspace }}/PDGAApi.Net.Tests/PDGAApi.Net.Tests.csproj"
       
     - name: "Test"
       run: dotnet test --no-restore --verbosity normal
